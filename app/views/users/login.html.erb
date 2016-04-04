@@ -1,0 +1,33 @@
+<meta charset="utf8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<%= stylesheet_link_tag "/assets/stylesheets/bootstrap.min.css" %>
+<%= stylesheet_link_tag "/assets/stylesheets/css.css" %>
+
+<%= form_tag("/users/login_handle", method: "post", :class => "form-inline", :role=> "form") do %>
+<div class="login">
+<br/><br/>
+	<div style="text-align:center">
+		<span class="glyphicon glyphicon-user"></span>
+		<input type="text" name="username" class="form-control" placeholder="username">
+		<%= @username_empty %><%= @username_error %>
+		<br/><br/>
+		
+		<span class="glyphicon glyphicon-lock"></span>
+		<input type="password" name="password" class="form-control" placeholder="password">
+		<%= @password_empty %><%= @password_error %>
+		<br/><br/>
+		
+		<table>
+		<tr>
+		<td><input name="submit" type="submit" value="login" class="button" style="margin-left: 50px"></input></td>		
+<% end %>
+	<%= form_tag("/users/register", method: "get", :class => "form-inline") do %>
+		<td><input name="submit" type="submit" value="register" class="button" style="margin-left: 50px"></input></td>
+		</tr>
+		</table>
+	</div>
+	<% end %>	
+</div>
+
+
+

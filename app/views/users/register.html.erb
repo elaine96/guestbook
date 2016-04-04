@@ -1,0 +1,40 @@
+<meta charset="utf8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<%= stylesheet_link_tag "/assets/stylesheets/bootstrap.min.css" %>
+<%= stylesheet_link_tag "/assets/stylesheets/css.css" %>
+<%= form_tag("/users/register_handle", method: "post", :class => "form-inline", :role=> "form") do %>
+<div class="register">
+<br/><br/>
+	<div style="text-align:center">
+		<span class="glyphicon glyphicon-user"></span>
+		<input name="username" type="text" placeholder="username" class="form-control"></input>
+		<%= @username_empty %><%= @username_error %>
+		<br><br>
+		
+		<span class="glyphicon glyphicon-lock"></span>
+		<input name="password" type="password" placeholder="password" class="form-control"></input>
+		<%= @password_empty %><%= @password_error %>
+		<br><br>
+		
+		<span class="glyphicon glyphicon-lock"></span>
+		<input name="repassword" type="password" placeholder="repassword" class="form-control"></input>
+		<%= @repassword_empty %><%= @repassword_error %>
+		<br><br>
+		
+		<span class="glyphicon glyphicon-envelope"></span>
+		<input name="email" type="text" placeholder="email" class="form-control"></input>
+		<%= @email_empty %><%= @email_error %>
+		<br><br>
+		
+		<table>
+		<tr>
+		<td><input name="submit" type="submit" value="register" class="button" style="margin-left: 50px"></input><br></td>		
+	</div>
+<% end %>
+	<%= form_tag("/users/login", method: "get", :class => "form-inline", :role=> "form") do %>
+		<td><input name="submit" type="submit" value="back" class="button" style="margin-left: 50px"></input><br></td>
+		</tr>
+		</table>
+	</div>
+	<% end %>
+</div>

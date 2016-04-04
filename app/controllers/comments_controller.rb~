@@ -1,0 +1,33 @@
+class messagesController < ApplicationController
+	def  comment
+		@message = Message.find_by_id(params[:message_id])
+	end
+
+	def comment_handle
+
+		username = session[:username]
+		recontent = params[:recontent]
+		# message_title = params[:message_title]
+		# @message = message.find_by_id(id)
+		# message_title = @message.title
+		# message_username = @message.username
+		# message_id = @message.id
+		# message_content = @message.content
+		@comment = Comment.new
+		@comment.username = username
+		# @comment.message_title = message_title
+		@comment.recontent = recontent
+		@comment.message_id = params[:message_id]
+		# @comment.message_username = message_username
+		# @comment.message_id = message_id
+		# @comment.message_content = message_content
+		@comment.save
+		redirect_to(:controller => 'messages', :action => 'index')
+	end
+
+	def destroy
+		@comment = Comment.find(params[:id]);
+		@comment.destroy;
+		redirect_to(:controller => 'messages', :action => 'index')
+	end
+end

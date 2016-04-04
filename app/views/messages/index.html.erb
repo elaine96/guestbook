@@ -1,0 +1,54 @@
+<div style="margin:20px auto;margin-left:40px">
+	<div class="message">
+		<div><%= flash[:error] %></div><br>
+		
+		<%= form_tag("/messages/message_handle", method: "post", :class => "form-line") do %>
+			title:<input name="title" type="text" placeholder="title" class="form-control"></input>
+			<br>
+
+			content:<textarea name="content" placeholder="content" class="form-control" rows="5"></textarea>
+			<br>
+			<table>
+			<tr>
+			<td><input name="submit" type="submit" value="create message" class="button"></input></td>
+		<% end %>
+		<%= form_tag("/users/login", method: "get", :class => "form-line") do %>
+			<td><input name="submit" type="submit" value="exit" class="button" style="margin-left: 50px"></input></td>	
+			</tr>
+			</table>
+		<% end %>
+		<br>		
+	</div>
+	
+	<% @messages.each do |message| %>
+	<div class="show">
+		<div class="title"><h1><%= message.title %></h1></div>
+		<div class="m_font">message:</div>
+		<div class="content">
+			<%= message.content %>
+			<div class="handle">
+				<%= link_to'delete', destroy_message_path(message.id), data: { confirm: "Are you sure??" } %>
+				<%= link_to 'comment', message_comments_path(message.id) %>
+			</div>		
+		</div>
+		<div class="user">
+			user:<%= message.username %>
+			&nbsp;&nbsp;time:<%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+		</div><br/>
+	<% message.comments.each do |comment| %>
+		<div class="c_font">comment:</div>
+		<div class="content">
+			<%= comment.content %>
+			<div class="handle">
+				<%= link_to'delete', destroy_comment_path(comment.id), data: { confirm: "Are you sure??" } %>
+			</div>
+		</div>
+		<div class="user">
+			user:<%= comment.username %>					
+			&nbsp;&nbsp;time:<%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+		</div><br/>
+	<% end %>
+	</div>
+	<% end %>	
+</table>
+</div>

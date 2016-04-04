@@ -1,0 +1,23 @@
+<div style="margin:20px auto;margin-left:40px">
+	<div class="comment">
+		<div><%= flash[:error] %></div><br>
+		
+		<%= form_tag(create_message_comment_path(@message.id), method: "post", :class => "form-line") do %>
+		title:<input name="title" type="text" placeholder="<%= @message.title%>" class="form-control" disabled="disabled"></input>
+
+		content:<textarea name="content" placeholder="content"  class="form-control" rows="10"></textarea>
+		<br><br>		
+			<table>
+			<tr>
+			<td><input name="submit" type="submit" value="create comment" class="button"></input></td>
+		<% end %>
+		<%= form_tag("/messages/index", method: "get", :class => "form-line") do %>
+			<td><input name="submit" type="submit" value="back" class="button" style="margin-left: 30px"></input></td>
+		<% end %>
+		<%= form_tag("/users/login", method: "get", :class => "form-line") do %>
+			<td><input name="submit" type="submit" value="exit" class="button" style="margin-left: 30px"></input></td>		
+			</tr>
+			</table>
+		<% end %>		
+	</div>
+</div>
